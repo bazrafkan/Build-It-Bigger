@@ -2,13 +2,14 @@ package com.udacity.gradle.javajokes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import com.udacity.gradle.javajokes.models.Joke;
 import com.udacity.gradle.javajokes.utils.NetworkUtils;
 
 import java.net.URL;
 
 public class Jokes {
-    final static String JOKE_URL = "http://jokes.guyliangilsing.me/retrieveJokes.php?type=random";
+    final static String JOKE_URL = "https://jokes.guyliangilsing.me/retrieveJokes.php?type=random";
 
     public static String getRandomJoke() {
         try {
