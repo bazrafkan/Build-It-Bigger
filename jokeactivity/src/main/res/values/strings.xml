@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Joke Activity</string>
+    <string name="joke_is">Joke is:</string>
+    <string name="joke_error_message">Can not get a joke</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="joke_activity_title_layout_marginHorizontal">16dp</dimen>
+    <dimen name="joke_activity_title_layout_marginTop">16dp</dimen>
+    <dimen name="joke_activity_title_textSize">24sp</dimen>
+    <dimen name="joke_activity_joke_layout_marginHorizontal">16dp</dimen>
+    <dimen name="joke_activity_joke_layout_marginVertical">8dp</dimen>
+    <dimen name="joke_activity_joke_textSize">18sp</dimen>
+</resources>
