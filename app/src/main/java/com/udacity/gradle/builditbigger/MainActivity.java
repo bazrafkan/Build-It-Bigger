@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements JokeTask.AsyncJokeTaskResult {
+    private JokeTask jokeTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +41,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+        jokeTask = new JokeTask(this);
+        jokeTask.execute();
     }
 
 
+    @Override
+    public void onPreExecute() {
+    }
+
+    @Override
+    public void onPostExecute(String result) {
+        if (result != null) {
+            Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Can not get a joke", Toast.LENGTH_LONG).show();
+        }
+    }
 }
