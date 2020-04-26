@@ -1,20 +1,25 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.ProgressBar;
+
+import com.udacity.gradle.jokeactivity.JokeActivity;
 
 
 public class MainActivity extends AppCompatActivity implements JokeTask.AsyncJokeTaskResult {
     private JokeTask jokeTask;
+    private ProgressBar mLoadingProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mLoadingProgressBar = findViewById(R.id.pb_loading);
     }
 
 
@@ -48,14 +53,16 @@ public class MainActivity extends AppCompatActivity implements JokeTask.AsyncJok
 
     @Override
     public void onPreExecute() {
+        mLoadingProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onPostExecute(String result) {
+        mLoadingProgressBar.setVisibility(View.INVISIBLE);
+        Intent intent = new Intent(this, JokeActivity.class);
         if (result != null) {
-            Toast.makeText(this, result, Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, "Can not get a joke", Toast.LENGTH_LONG).show();
+            intent.putExtra(Intent.EXTRA_TEXT, result);
         }
+        startActivity(intent);
     }
 }
